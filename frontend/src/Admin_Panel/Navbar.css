@@ -1,0 +1,32 @@
+.top-navbar {
+  width: 100%;
+  height: 60px;
+  background-color: #1c2b36;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 0 20px;
+  position: relative;
+}
+.top-navbar span{
+  font-size: 30px;
+}
+
+.logout-btn {
+  background-color: #f44336;
+   margin-left: auto;
+   margin-right: 5pc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
+

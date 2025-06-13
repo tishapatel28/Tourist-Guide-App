@@ -11,18 +11,32 @@ import DashboardBox from './Admin_Panel/DashboardBox';
 import Mybar from './Admin_Panel/Mybar';
 import Navbar from './Admin_Panel/Navbar';
 import { FaDollarSign, FaThumbsUp, FaShareAlt, FaStar } from 'react-icons/fa';
-import RestaurantList from './Restaurant/RestaurantList';
+import Home from './Home';
+import Home2 from './Home2';
+import { useEffect } from 'react';
+
 
 function App() {
+ 
+  
+ 
   return (
 
-    <>
-      <Provider store={Store}>
-        <CarList/>
-      </Provider>
-      
+   
 
-    {/* <Navbar />
+    <>
+
+      <Routes>
+        <Route path="/Mybar" element={<Mybar />} />
+        <Route path="/Home2" element={<Home2/>}/>
+      </Routes>
+
+      {/* <Provider store={Store}>
+       <RestaurantList/>
+      </Provider> */}
+
+
+      {/* <Navbar />
       <div style={{ display: 'flex', minHeight: '100vh', background: '#f4f6fa' }}>
         <Mybar />
         <div style={{ flex: 1, display: 'flex' }}>         
@@ -30,10 +44,15 @@ function App() {
       </div> */}
 
 
-    </>
+      <Home />
 
+    </>
+ 
 
   );
 }
 
 export default App;
+
+
+

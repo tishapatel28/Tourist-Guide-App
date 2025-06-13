@@ -7,10 +7,8 @@ import UserComponent from './UserComponent';
 const Userlist = () => {
   const dispatch = useDispatch();
 
-  // Grab user slice safely without destructuring directly in the parameter
   const userState = useSelector((state) => state.user);
 
-  // Destructure with defaults to prevent creating new objects every render
   const users = userState?.list ?? [];
   const status = userState?.status ?? 'idle';
   const error = userState?.error ?? null;

@@ -1,0 +1,34 @@
+.restaurant-list h4 {
+  color: #333;
+}
+
+.custom-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-align: center;
+}
+
+.custom-table td {
+  vertical-align: middle;
+}
+
+.pagination button {
+  min-width: 32px;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.bi {
+  font-size: 1rem;
+}
+
+.pagination {
+  margin-top: 1rem;
+}
+
+.container {
+  max-width: 95%;
+}

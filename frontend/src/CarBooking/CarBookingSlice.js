@@ -1,4 +1,4 @@
-// src/slices/CarSlice.js
+// src/slices/CarbookingSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Url } from '../URL/Url';
@@ -9,11 +9,11 @@ const initialState = {
   error: null,
 };
 
-const CarSlice = createSlice({
-  name: 'car',
+const CarBookingSlice = createSlice({
+  name: 'carbooking',
   initialState,
   reducers: {
-    setCars: (state, action) => {
+    setCarbookings: (state, action) => {
       state.list = action.payload;
     },
     setStatus: (state, action) => {
@@ -22,10 +22,10 @@ const CarSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
-    removeCar: (state, action) => {
-      state.list = state.list.filter(car => car.id !== action.payload);
+    removeCarbooking: (state, action) => {
+      state.list = state.list.filter(carbooking => carbooking.id !== action.payload);
     },
-    updateCar: (state, action) => {
+    updateCarbooking: (state, action) => {
       const updated = action.payload;
       const index = state.list.findIndex(c => c.id === updated.id);
       if (index !== -1) {
@@ -35,13 +35,13 @@ const CarSlice = createSlice({
   },
 });
 
-export const { setCars, setStatus, setError, removeCar, updateCar } = CarSlice.actions;
+export const { setCarbookings, setStatus, setError, removeCarbooking, updateCarbooking } = CarBookingSlice.actions;
 
-export const readCar = () => async (dispatch) => {
+export const readCarbooking = () => async (dispatch) => {
   dispatch(setStatus('loading'));
   try {
-    const response = await axios.get(Url.GETALL_CAR_API);
-    dispatch(setCars(response.data));
+    const response = await axios.get(Url.GETALL_CARBOOKING_API);
+    dispatch(setCarbookings(response.data));
     dispatch(setStatus('succeeded'));
   } catch (error) {
     dispatch(setError(error.message));
@@ -49,14 +49,14 @@ export const readCar = () => async (dispatch) => {
   }
 };
 
-export const addCar = (formData) => async (dispatch) => {
+export const addCarbooking = (formData) => async (dispatch) => {
   dispatch(setStatus('loading'));
   try {
-    const response = await axios.post(Url.ADD_CAR_API, formData, {
+    const response = await axios.post(Url.ADD_CARBOOKING_API, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
     dispatch(setStatus('succeeded'));
-    dispatch(readCar());
+    dispatch(readCarbooking());
     return response.data;
   } catch (error) {
     dispatch(setError(error.message));
@@ -65,15 +65,15 @@ export const addCar = (formData) => async (dispatch) => {
   }
 };
 
-export const updateCarDetails = ({ id, formData }) => async (dispatch) => {
+export const updateCarbookingDetails = ({ id, formData }) => async (dispatch) => {
   dispatch(setStatus('loading'));
   try {
-    const response = await axios.patch(`${Url.UPDATE_CAR_API}/${id}`, formData, {
+    const response = await axios.patch(`${Url.UPDATE_CARBOOKING_API}/${id}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
 
-    dispatch(updateCar(response.data));
-    dispatch(readCar());
+    dispatch(updateCarbooking(response.data));
+    dispatch(readCarbooking());
     dispatch(setStatus('succeeded'));
   } catch (error) {
     dispatch(setError(error.message));
@@ -81,12 +81,12 @@ export const updateCarDetails = ({ id, formData }) => async (dispatch) => {
   }
 };
 
-export const deleteCar = (carId) => async (dispatch) => {
+export const deleteCarbooking = (carbookingId) => async (dispatch) => {
   dispatch(setStatus('loading'));
   try {
-    await axios.delete(`${Url.DELETE_CAR_API}/${carId}`);
-    dispatch(removeCar(carId));
-    dispatch(readCar());
+    await axios.delete(`${Url.DELETE_CARBOOKING_API}/${carbookingId}`);
+    dispatch(removeCarbooking(carbookingId));
+    dispatch(readCarbooking());
     dispatch(setStatus('succeeded'));
   } catch (error) {
     dispatch(setError(error.message));
@@ -94,4 +94,4 @@ export const deleteCar = (carId) => async (dispatch) => {
   }
 };
 
-export default CarSlice.reducer;
+export default CarBookingSlice.reducer;

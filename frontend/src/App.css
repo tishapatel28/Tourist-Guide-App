@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+ */
+
+
+.cardsec
+{
+  margin-inline-start: 350px;
+ 
+  
+}
+
+.custom-row > [class*='col'] {
+  
+  width: 40%;
+}
+
+
+/* RestaurantList CSS */
+
+
